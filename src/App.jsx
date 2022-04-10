@@ -3,6 +3,46 @@ import { ChainId } from '@thirdweb-dev/sdk'
 import { useState, useEffect, useMemo } from 'react';
 import { AddressZero } from "@ethersproject/constants";
 
+//subgraph
+{
+  indexingStatuses(subgraphs: ["Qm..."]) {
+    node
+    synced
+    health
+    fatalError {
+      message
+      block {
+        number
+        hash
+      }
+      handler
+    }
+    nonFatalErrors {
+      message
+      block {
+        number
+        hash
+      }
+      handler
+    }
+    chains {
+      network
+      chainHeadBlock {
+        number
+      }
+      earliestBlock {
+        number
+      }
+      latestBlock {
+        number
+      }
+      lastHealthyBlock {
+        number
+      }
+    }
+    entityCount
+  }
+}
 const App = () => {
   // Use the hooks thirdweb give us.
   const address = useAddress();
